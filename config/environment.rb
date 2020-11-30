@@ -1,6 +1,10 @@
-ENV['SINATRA_ENV'] ||= "development"
+ENV['SINATRA_ENV'] ||= "development" #sets up the environment in which you want to run shotgun and the testing suit
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
+
+configure :development do
+  set :database, 'sqlite3:db/database.db'
+end
 
 require './app'
